@@ -14,34 +14,22 @@ export class Money {
     return this.currency_string;
   }
   
-  public equals(object: any): boolean {
+  public equals(object: Money): boolean {
     const money = object as Money;
     return this.amount === money.amount 
       && this.currency() === money.currency();
   }
 
   static dollar(amount: number): Money {
-    return new Dollar(amount, "USD");
+    return new Money(amount, "USD");
   }
 
   static franc(amount: number): Money {
-    return new Franc(amount, "CHF");
+    return new Money(amount, "CHF");
   }
 
   public times(multiplier: number): Money {
     return new Money(this.amount * multiplier, this.currency_string);
-  }
-}
-
-
-export class Dollar extends Money {
-
-  constructor(amount: number, currency_string: string) {
-    super(amount, currency_string);
-  }
-  
-  public times(multiplier: number): Money {
-    return Money.dollar(this.amount * multiplier);
   }
 }
 
