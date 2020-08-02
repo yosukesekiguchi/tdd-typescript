@@ -26,4 +26,8 @@ describe("money", () => {
     expect(Money.franc(1).currency()).toEqual("CHF");
 
   });
+
+  it("DifferentClassEqulity", () => {
+    expect(new Franc(10, "CHF")).toEqual(new Money(10, "CHF"))
+  })
 });
